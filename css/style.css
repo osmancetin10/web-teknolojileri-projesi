@@ -48,10 +48,10 @@
     margin: 0;
 }
 .text p{
-    text-align: justify;
+    text-align: left;
 }
 .text a{
-    color: black;
+    color: blue;
 }
 .text a:hover{
     text-decoration: none;
