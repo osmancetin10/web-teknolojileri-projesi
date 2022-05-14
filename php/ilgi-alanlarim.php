@@ -26,19 +26,19 @@
                     <a class="nav-link" href="../index.html">Hakkımda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cv.html">CV</a>
+                    <a class="nav-link" href="../html/cv.html">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sehrim.html">Şehrim<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../html/sehrim.html">Şehrim<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/ilgi-alanlarim.php">İlgi Alanlarım</a>
+                    <a class="nav-link" href="php/ilgi-alanlarim.php">İlgi Alanlarım</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="iletisim.html">İletişim</a>
+                    <a class="nav-link" href="../html/iletisim.html">İletişim</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="../html/login.html">Login</a>
                 </li>
             </ul>
         </div>
@@ -50,14 +50,44 @@
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-                <img width="30%" src="../img/antalyaspor_logo.png" alt="">
+            <?php
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+            	CURLOPT_URL => "https://dog.ceo/api/breeds/image/random",
+            	CURLOPT_RETURNTRANSFER => true,
+            	CURLOPT_FOLLOWLOCATION => true,
+            	CURLOPT_ENCODING => "",
+            	CURLOPT_MAXREDIRS => 10,
+            	CURLOPT_TIMEOUT => 30,
+            	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            	CURLOPT_CUSTOMREQUEST => "GET",
+            	CURLOPT_HTTPHEADER => [
+            		"X-RapidAPI-Host: api-nba-v1.p.rapidapi.com",
+            		"X-RapidAPI-Key: fe640a47e6msh178cc3f97b1ca85p19b5c6jsn3ddfd8c855df"
+            	],
+            ]);
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            $person = json_decode($response);
+            curl_close($curl);
+
+            if ($err) {
+            	echo "cURL Error #:" . $err;
+            } else {
+                echo '<img width="30%" src="' . $person->message . '" alt="">';
+            }
+            ?>
+
             <hr>
-            <h1 class="fw-light">Antalya Spor</h1>
-            <p class="lead text-muted">1966 yılında kurulan ve Antalya'yı Süper Lig'de temsil eden futbol takımıdır. Lakapları Akrep olan takımın renkleri, kırmızı ve beyazdır. Takım, kurulduğu 1966 yılından 2010 yılına kadar iç saha maçlarını Antalya Atatürk Stadyumu'nda oynamış, 2015-16 sezonunda ise Antalya Stadyumu'na taşınmıştır.</p>
-            <p class="lead text-muted">Antalyaspor kuruluş döneminde kırmızı forma beyaz şortla maçlarına çıksa da günümüzde düz kırmızı ve düz beyaz formaları tercih etmektedir. Son yıllarda formalarda mavi tonları da kullanılmaktadır. Takım, yıllar içinde bazı değişiklikler yapsa da logosundaki Yivli Minare ve A S harflerinin ve biçiminin değişmediği çeşitli armalar kullanmıştır. Antalyaspor, bugün kırmızı şerit ve yazılarla beyaz zemin üzerinde tasarlanmış logoyu kullanmaktadır.</p>
+            <h1 class="fw-light">Köpekler</h1>
+            <p class="lead text-muted">Bu sayfada kullanılan görsel için ücretsiz bir API servisinden faydalanılmıştır. Sayfa her yenilendiğinde yeni bir random köpek görseli görüyor olacaksınız.</p>
         </div>
     </div>
 </section>
+
 <a href="#top">
     <div class="to-up"><i class="fas fa-angle-up fa-2x"></i></div>
 </a>

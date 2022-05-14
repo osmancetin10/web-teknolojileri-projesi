@@ -9,7 +9,7 @@ if(isset($_POST['send'])){
     $cinsiyet=$_POST["cinsiyet"];
     $konu=$_POST["konu"];
     $mesaj=$_POST["mesaj"];
-    if($ad!="" && $soyad!="" && $email!="" && $cinsiyet!="" && $konu!="" && $mesaj!=""){
+    if($ad!="" && $email!="" && $cinsiyet!="" && $konu!="" && $mesaj!=""){
         echo "Ad Soyad: $ad <br>";
         echo "E-Mail: $email <br>";
         echo "Cinsiyet: $cinsiyet <br>";
